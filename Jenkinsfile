@@ -64,15 +64,13 @@ pipeline {
         sh 'java -version'
       }
     }
-  }
-    stages {
+    
     stage('Gradle Version') {
       steps {
         sh 'gradle -version'
       }
     }
-  }
-    stages {
+    
     stage('Build') {
       steps {
         sh './gradlew :build'
@@ -83,6 +81,7 @@ pipeline {
     GRADLE_USER_HOME = '/jenkins/.gradle'
   }
 }
+
 // pipeline {
 //     agent any
 
