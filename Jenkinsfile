@@ -51,13 +51,45 @@
 // }
 
 //##########################################
+// pipeline {
+//   agent {
+//     docker {
+//       args '-v /jenkins/.gradle:/jenkins/.gradle'
+//       image 'gradle:latest'
+//     }
+//   }
+//   stages {
+//     stage('Java Version') {
+//       steps {
+//         sh 'java -version'
+//       }
+//     }
+    
+//     stage('Gradle Version') {
+//       steps {
+//         sh 'gradle -version'
+//       }
+//     }
+    
+//     stage('Build') {
+//       steps {
+//         sh './gradlew :build'
+//       }
+//     }
+//   }
+//   environment {
+//     GRADLE_USER_HOME = '/jenkins/.gradle'
+//   }
+// }
+//#############################################################33
+
 pipeline {
-  agent {
-    docker {
-      args '-v /jenkins/.gradle:/jenkins/.gradle'
-      image 'gradle:latest'
-    }
+  agent none
+  
+  environment {
+    GRADLE_USER_HOME = '/jenkins/.gradle'
   }
+  
   stages {
     stage('Java Version') {
       steps {
@@ -77,24 +109,5 @@ pipeline {
       }
     }
   }
-  environment {
-    GRADLE_USER_HOME = '/jenkins/.gradle'
-  }
 }
 
-// pipeline {
-//     agent any
-
-//     stages {
-//         stage('Print Versions') {
-//             steps {
-//                 script {
-//                     sh "/var/lib/jenkins/.gradle/wrapper/dists/gradle-6.4.1-all/13imxtezgn9nwzqt8rgtkunh1/gradle-6.4.1/bin/gradle --version"
-                    
-//                     // Print Java version
-//                     sh 'java -version'
-//                 }
-//             }
-//         }
-//     }
-// }
