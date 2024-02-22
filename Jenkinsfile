@@ -84,7 +84,7 @@
 //#############################################################33
 
 pipeline {
-  agent none
+  agent any
   
   environment {
     GRADLE_USER_HOME = '/jenkins/.gradle'
