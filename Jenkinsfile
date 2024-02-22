@@ -51,45 +51,13 @@
 // }
 
 //##########################################
-// pipeline {
-//   agent {
-//     docker {
-//       args '-v /jenkins/.gradle:/jenkins/.gradle'
-//       image 'gradle:latest'
-//     }
-//   }
-//   stages {
-//     stage('Java Version') {
-//       steps {
-//         sh 'java -version'
-//       }
-//     }
-    
-//     stage('Gradle Version') {
-//       steps {
-//         sh 'gradle -version'
-//       }
-//     }
-    
-//     stage('Build') {
-//       steps {
-//         sh './gradlew :build'
-//       }
-//     }
-//   }
-//   environment {
-//     GRADLE_USER_HOME = '/jenkins/.gradle'
-//   }
-// }
-//#############################################################33
-
 pipeline {
-  agent any
-  
-  environment {
-    GRADLE_USER_HOME = '/jenkins/.gradle'
+  agent {
+    docker {
+      args '-v /jenkins/.gradle:/jenkins/.gradle'
+      image 'gradle:latest'
+    }
   }
-  
   stages {
     stage('Java Version') {
       steps {
@@ -109,5 +77,37 @@ pipeline {
       }
     }
   }
+  environment {
+    GRADLE_USER_HOME = '/jenkins/.gradle'
+  }
 }
+//#############################################################33
+
+// pipeline {
+//   agent any
+  
+//   environment {
+//     GRADLE_USER_HOME = '/jenkins/.gradle'
+//   }
+  
+//   stages {
+//     stage('Java Version') {
+//       steps {
+//         sh 'java -version'
+//       }
+//     }
+    
+//     stage('Gradle Version') {
+//       steps {
+//         sh 'gradle -version'
+//       }
+//     }
+    
+//     stage('Build') {
+//       steps {
+//         sh './gradlew :build'
+//       }
+//     }
+//   }
+// }
 
