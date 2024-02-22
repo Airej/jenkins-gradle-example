@@ -21,7 +21,7 @@ apply plugin: 'java-library'
 // Specify the Java version
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11) // Change this to the desired Java version
+        languageVersion = JavaLanguageVersion.of(7) // Change this to the desired Java version
     }
 }
 
