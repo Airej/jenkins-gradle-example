@@ -45,5 +45,5 @@ cobertura {
 }
 
 checkstyle {
-    toolVersion '8.17'
+    toolVersion '10.13.0'
 }
